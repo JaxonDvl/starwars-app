@@ -4,7 +4,8 @@
   "description": "Starwars battleship api playground",
   "main": "consoleApp.js",
   "scripts": {
-    "start": "node consoleApp.js"
+    "start": "node consoleApp.js",
+    "docs" : "jsdoc -c jsdoc_conf.json"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,9 @@
   "homepage": "https://github.com/JaxonDvl/starwars-app#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "docdash": "^0.4.0",
     "dotenv": "^6.0.0"
+  },
+  "devDependencies": {
+    "docdash": "^0.4.0"
   }
 }

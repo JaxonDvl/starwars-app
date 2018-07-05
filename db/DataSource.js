@@ -4,6 +4,11 @@ let utils = require('../helpers/utils');
 const fs = require('fs');
 const readFile = nodeUtils.promisify(fs.readFile);
 
+/**
+ * @class - Describes a database mock of the available resources for the command center
+ * @property {Object} starshipTable - List of ships in the database
+ * */
+
 class DataSource {
   constructor() {
     this.starshipTable = [];

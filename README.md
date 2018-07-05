@@ -13,6 +13,7 @@ Sample console application using [SWAPI](https://swapi.co) for computing the num
     - [Installing](https://github.com/JaxonDvl/starwars-app#installing)
 - [Usage](https://github.com/JaxonDvl/starwars-app#usage)
 - [Testing](https://github.com/JaxonDvl/starwars-app#testing)
+- [Docs](https://github.com/JaxonDvl/starwars-app#docs)
 - [License](https://github.com/JaxonDvl/starwars-app#license)
 
 ## Getting started
@@ -40,9 +41,16 @@ $ git clone https://github.com/JaxonDvl/starwars-app
 
 Install dependencies in the source directory.
 
-```
+```bash
 $ cd starwars-app
 $ npm install
+```
+
+If we are going to deploy this app to a production environment we may want to omit development dependencies for testing and docs generation. Just install the dependencies with the `--production` flag:
+
+```bash
+$ cd starwars-app
+$ npm --production install
 ```
 
 ## Usage
@@ -57,17 +65,48 @@ FLEET_FILE=shipfleet.json
 
 Run the app using:
 
+```bash
+$ npm start
 ```
-npm start
-```
-Generating docs: 
-```
-jsdoc -d ./docs  models/ -t node_modules/docdash/
-```
+
 
 ## Testing
 
 
+
+## Docs
+
+Install [JSDoc 3](https://github.com/jsdoc3/jsdoc) documentation generator for JavaScript:
+
+```bash
+$ npm install -g jsdoc
+```
+
+If you installed the app in production mode as seen in [Installing](https://github.com/JaxonDvl/starwars-app#installing) chapter, make sure you install the node modules without the `--production` flag to include [Docdash](https://github.com/clenemt/docdash) template module in our source tree:
+
+```bash
+$ cd starwars-app
+$ npm install
+```
+
+
+Generating the docs: 
+```bash
+$ cd starwars-app
+$ npm run docs
+```
+
+The output will be available in the `docs` folder and for this reporsitory on GitHub Pages at [Star Wars App Docs](https://jaxondvl.github.io/starwars-app/)
+
+For future development we can include or exclude files that we want to document in `jsdoc_conf.json` file:
+
+```json
+"source": {
+        "include": ["db","helpers","models", "consoleApp.js", "README.md"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    }
+```
 
 ## License
 
