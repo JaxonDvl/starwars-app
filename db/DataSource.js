@@ -1,10 +1,10 @@
 const axios = require('axios');
 const nodeUtils = require('util');
-let utils = require('./utils');
+let utils = require('../helpers/utils');
 const fs = require('fs');
 const readFile = nodeUtils.promisify(fs.readFile);
 
-class DataStore {
+class DataSource {
   constructor() {
     this.starshipTable = [];
   }
@@ -50,4 +50,4 @@ class DataStore {
   }
 }
 
-module.exports = DataStore;
+module.exports = DataSource;

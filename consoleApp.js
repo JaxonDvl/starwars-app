@@ -1,9 +1,8 @@
 require('dotenv').config();
-let utils = require('./utils');
 
 const readline = require('readline');
-const ShipFleet = require('./ShipFleet');
-const DataStore = require('./DataStore');
+const ShipFleet = require('./models/ShipFleet');
+const DataSource = require('./db/DataSource');
 
 const readLineEvents = readline.createInterface({
   input: process.stdin,
@@ -13,9 +12,9 @@ const readLineEvents = readline.createInterface({
 function setup(hciInterface) {
   console.log('Please standby. Loading Battleships ...');
   hciInterface.pause();
-  let databaseInstance = new DataStore();
+  let databaseInstance = new DataSource();
   databaseInstance
-    .init()
+    .initFromFile()
     .then(() => {
       let myShipFleet = new ShipFleet(databaseInstance.getStarShips());
       hciInterface.resume();
